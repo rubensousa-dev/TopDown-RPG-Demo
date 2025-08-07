@@ -5,19 +5,23 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static Vector2 MoveInput;
-    private InputAction moveAction;
+    public static bool InteractInput, InventoryAction;
+    
+    private InputAction moveAction, interactAction,inventoryAction;
     private PlayerInput playerInput;
 
     private void Awake()
     {
        playerInput = GetComponent<PlayerInput>();
-        moveAction = playerInput.actions["Move"];
+       moveAction = playerInput.actions["Move"];
+       interactAction = playerInput.actions["Interact"];
+       inventoryAction = playerInput.actions["Inventory"];
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         MoveInput = moveAction.ReadValue<Vector2>();
+        InteractInput = interactAction.WasPressedThisFrame();
+        InventoryAction = inventoryAction.WasPressedThisFrame();
     }
 }

@@ -153,8 +153,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030942917, y: 0.5738373}
-  m_Size: {x: 1.1751802, y: 1.5189922}
+  m_Offset: {x: -0.065111995, y: 0.5257936}
+  m_Size: {x: 0.69, y: 0.92745554}
   m_Direction: 0
 --- !u!95 &2844240119364991516
 Animator:
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe6df5dcd9749949821362e08c9af81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRadius: 1.2
-  interactionOffset: {x: 0, y: 0.5}
+  interactionRadius: 0.75
+  interactionOffset: {x: 0, y: 0.62}
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64

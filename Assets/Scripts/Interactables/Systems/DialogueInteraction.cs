@@ -6,7 +6,6 @@ public class DialogueInteraction : MonoBehaviour, IInteractable
     public DialogueSO dialogueData;
 
     [Header("Visual Effects")]
-    public GameObject glowEffect;
     public GameObject interactionUIPrompt;
 
     [Header("Interaction Settings")]
@@ -48,9 +47,6 @@ public class DialogueInteraction : MonoBehaviour, IInteractable
 
     public void SetHighlight(bool active)
     {
-        if (glowEffect != null)
-            glowEffect.SetActive(active);
-
         if (interactionUIPrompt != null)
             interactionUIPrompt.SetActive(active);
     }

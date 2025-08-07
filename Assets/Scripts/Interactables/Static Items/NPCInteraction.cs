@@ -12,7 +12,21 @@ public class NPCInteraction : DialogueInteraction
         {
             return false;
         }
+        
+        if (DialogSystem.Instance != null && DialogSystem.Instance.IsDialogActive())
+        {
+            return false;
+        }
+        
         lastInteractionTime = Time.time;
         return base.Interact(interactor);
+    }
+    
+    public override bool IsInteractable()
+    {
+        if (Time.time - lastInteractionTime < cooldownTime)
+            return false;
+            
+        return base.IsInteractable();
     }
 }

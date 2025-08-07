@@ -3,17 +3,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/Item")]
 public class ItemSO : ScriptableObject
 {
-    public string itemName;
-    public Sprite icon;
+    [field: SerializeField]
+    public bool IsStackable { get; set; }
+    public int ID => GetInstanceID();
+    [field: SerializeField]
+    public string itemName { get; set; }
+    [field: SerializeField]
+    public Sprite icon { get; set; }
     [TextArea(2, 5)]
-    public string description;
-    public ItemType type;
+    public string description { get; set; }
+    [field: SerializeField]
+    public ItemType type { get; set; }
+
 }
 
 public enum ItemType
 {
     Apple,
     Potion,
-    Weapon,
-    Material,
 }

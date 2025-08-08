@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d179591c98ac8c4e9e2a71089a55936, type: 3}
   m_Name: BluePotion
   m_EditorClassIdentifier: 
+  isStackable: 1
+  maxStackSize: 10
   itemName: Blue Potion
   icon: {fileID: 21300000, guid: ace8a02646afeda4880fc3cb14cad705, type: 3}
-  description: Miatery drink, drink it and you see muahahah
+  description: "Liquid mystery in a fancy bottle. \nMakes you blue and faster for
+    5 seconds!\nGreat deal"
   type: 1
+  itemIndex: 2

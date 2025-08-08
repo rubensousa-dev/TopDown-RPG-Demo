@@ -7,8 +7,8 @@ using System;
 public class InventoryItemSlot : MonoBehaviour,
     IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
 {
-    [SerializeField] private Image itemImage;
-    [SerializeField] private TMP_Text quantityText;
+    [SerializeField] public Image itemImage;
+    [SerializeField] public TMP_Text quantityText;
     [SerializeField] private Image borderImage;
 
     public event Action<InventoryItemSlot> OnItemClicked;
@@ -43,15 +43,14 @@ public class InventoryItemSlot : MonoBehaviour,
     public void Select() => borderImage.enabled = true;
 
     public void Deselect() => borderImage.enabled = false;
+ 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (empty) return;
-
-        if (eventData.button == PointerEventData.InputButton.Right)
-            OnRightMouseBtnClick?.Invoke(this);
-        else
+        if (eventData.button == PointerEventData.InputButton.Left)
             OnItemClicked?.Invoke(this);
+        else
+            OnRightMouseBtnClick?.Invoke(this);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d179591c98ac8c4e9e2a71089a55936, type: 3}
   m_Name: GreenPotion
   m_EditorClassIdentifier: 
+  isStackable: 1
+  maxStackSize: 99
   itemName: Green Potion
   icon: {fileID: 21300000, guid: f65023889763c7644b5579f0b019da6b, type: 3}
-  description: This potion makes you green!
+  description: "It turns you green like the Hulk and slower as well, but don\xB4t
+    worry is only for 5 seconds"
   type: 1
+  itemIndex: 3

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NPCDialog
   m_EditorClassIdentifier: 
   lines:
-  - 'The person you are looking for is on the other side of that door! '
+  - "They\u2019re just past that door!"

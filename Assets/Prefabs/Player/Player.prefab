@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3539769962025843132}
   - component: {fileID: 2844240119364991516}
   - component: {fileID: 3960537775579765650}
+  - component: {fileID: 2386717087945294487}
   - component: {fileID: 5889550718847747981}
   m_Layer: 0
   m_Name: Player
@@ -192,6 +193,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 2571717834420210718}
+--- !u!114 &2386717087945294487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238876491551665314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72000629809c2ae45922624be6c697bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSprite: {fileID: 4726479815974454581}
+  playerMovement: {fileID: 3960537775579765650}
+  effectDuration: 5
+  speedMultiplier: 2
+  greenPotionColor: {r: 0, g: 1, b: 0, a: 0.85882354}
+  bluePotionColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &5889550718847747981
 MonoBehaviour:
   m_ObjectHideFlags: 0

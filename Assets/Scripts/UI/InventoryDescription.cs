@@ -11,8 +11,6 @@ public class InventoryDescription : MonoBehaviour
     [SerializeField] private GameObject buttonsPanels;
     [SerializeField] private Button buttonUse;
     [SerializeField] private Button buttonDrop;
-
-    // Eventos para os botões
     public System.Action OnUseButtonClicked;
     public System.Action OnDropButtonClicked;
 

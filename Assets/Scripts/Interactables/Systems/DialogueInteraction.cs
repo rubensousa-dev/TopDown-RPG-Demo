@@ -25,14 +25,10 @@ public class DialogueInteraction : MonoBehaviour, IInteractable
         {
             return false;
         }
-
-        // Verificar se já há um diálogo ativo
         if (DialogSystem.Instance != null && DialogSystem.Instance.IsDialogActive())
         {
             return false;
         }
-
-        // Mostrar o diálogo
         if (DialogSystem.Instance != null)
         {
             DialogSystem.Instance.ShowDialog(dialogueData);
@@ -54,7 +50,6 @@ public class DialogueInteraction : MonoBehaviour, IInteractable
         if (dialogueData == null) return false;
         if (!canInteractMultipleTimes && hasInteracted) return false;
         
-        // Não permitir interação se já há um diálogo ativo
         if (DialogSystem.Instance != null && DialogSystem.Instance.IsDialogActive())
             return false;
             

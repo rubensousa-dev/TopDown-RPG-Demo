@@ -36,7 +36,6 @@ public class DialogSystem : MonoBehaviour
 
     private void Start()
     {
-       
         if (dialogPanel != null)
             dialogPanel.SetActive(false);
     }

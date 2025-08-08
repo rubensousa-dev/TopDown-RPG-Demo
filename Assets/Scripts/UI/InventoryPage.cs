@@ -9,13 +9,11 @@ public class InventoryPage : MonoBehaviour
     [SerializeField] private RectTransform contentPanel;
     [SerializeField] private InventoryDescription inventoryItemDescription;
     [SerializeField] private MouseFollower mouseFollower;
-    //[SerializeField] private ItemActionPanel actionPanel;
 
     private readonly List<InventoryItemSlot> itemSlots = new();
     private int? currentlyDraggedItemIndex = null;
-    private int? lastSelectedItemIndex = null; // Nova variável para rastrear o último item selecionado
+    private int? lastSelectedItemIndex = null;
 
-    // Propriedades públicas para acesso externo
     public List<InventoryItemSlot> ItemSlots => itemSlots;
     public int? LastSelectedItemIndex => lastSelectedItemIndex;
 
@@ -31,8 +29,6 @@ public class InventoryPage : MonoBehaviour
         Hide();
         mouseFollower.Toggle(false);
         inventoryItemDescription.Clear();
-        
-        // Configurar eventos dos botões
         if (inventoryItemDescription != null)
         {
             inventoryItemDescription.OnUseButtonClicked += OnUseButtonClicked;
@@ -64,22 +60,20 @@ public class InventoryPage : MonoBehaviour
     public void UpdateDescription(int itemIndex, Sprite itemImage, string name, string description)
     {
         if (itemIndex < 0 || itemIndex >= itemSlots.Count) return;
-
-        // Adicionar informação de quantidade se o item for stackable
         string fullDescription = description;
         if (itemSlots[itemIndex].quantityText.text != string.Empty)
         {
             int quantity = int.Parse(itemSlots[itemIndex].quantityText.text);
             if (quantity > 1)
             {
-                fullDescription += $"\n\nQuantidade: {quantity}";
+                fullDescription += $"\n\nQuantity: {quantity}";
             }
         }
 
         inventoryItemDescription.Set(itemImage, name, fullDescription);
         DeselectAllItems();
         itemSlots[itemIndex].Select();
-        lastSelectedItemIndex = itemIndex; // Atualizar o índice do item selecionado
+        lastSelectedItemIndex = itemIndex;
     }
 
     public void UpdateDescriptionWithoutReset(int itemIndex, Sprite itemImage, string name, string description)
@@ -87,9 +81,7 @@ public class InventoryPage : MonoBehaviour
         if (itemIndex < 0 || itemIndex >= itemSlots.Count) return;
 
         inventoryItemDescription.Set(itemImage, name, description);
-        lastSelectedItemIndex = itemIndex; // Atualizar o índice do item selecionado
-        
-        // Selecionar visualmente o slot correto
+        lastSelectedItemIndex = itemIndex;
         DeselectAllItems();
         itemSlots[itemIndex].Select();
     }
@@ -101,8 +93,6 @@ public class InventoryPage : MonoBehaviour
             slot.Reset();
             slot.Deselect();
         }
-        
-        // Manter a seleção do último item selecionado após reset
         if (lastSelectedItemIndex.HasValue && lastSelectedItemIndex.Value < itemSlots.Count)
         {
             itemSlots[lastSelectedItemIndex.Value].Select();
@@ -113,7 +103,7 @@ public class InventoryPage : MonoBehaviour
     {
         inventoryItemDescription.Clear();
         DeselectAllItems();
-        lastSelectedItemIndex = null; // Limpar a referência quando resetar seleção
+        lastSelectedItemIndex = null;
     }
 
     private void OnItemSelected(InventoryItemSlot slot)
@@ -121,7 +111,7 @@ public class InventoryPage : MonoBehaviour
         int index = GetItemIndex(slot);
         if (index == -1) return;
         
-        lastSelectedItemIndex = index; // Atualizar o último item selecionado
+        lastSelectedItemIndex = index;
         OnDescriptionRequested?.Invoke(index);
     }
 
@@ -150,7 +140,6 @@ public class InventoryPage : MonoBehaviour
         if (currentlyDraggedItemIndex.HasValue)
         {
             lastSelectedItemIndex = index; 
-            // Selecionar visualmente o novo slot onde o item foi movido
             DeselectAllItems();
             itemSlots[index].Select();
         }
@@ -184,18 +173,6 @@ public class InventoryPage : MonoBehaviour
         mouseFollower.SetData(sprite, quantity);
     }
 
-    public void AddAction(string actionName, Action performAction)
-    {
-        //actionPanel.AddButon(actionName, performAction);
-    }
-
-    public void ShowItemAction(int itemIndex)
-    {
-        if (itemIndex < 0 || itemIndex >= itemSlots.Count) return;
-        //actionPanel.Toggle(true);
-        //actionPanel.transform.position = itemSlots[itemIndex].transform.position;
-    }
-
     private void ResetDraggedItem()
     {
         mouseFollower.Toggle(false);
@@ -206,8 +183,6 @@ public class InventoryPage : MonoBehaviour
     {
         foreach (var slot in itemSlots)
             slot.Deselect();
-
-        //actionPanel.Toggle(false);
     }
 
     private int GetItemIndex(InventoryItemSlot slot)
@@ -223,7 +198,6 @@ public class InventoryPage : MonoBehaviour
 
     public void Hide()
     {
-        //actionPanel.Toggle(false);
         gameObject.SetActive(false);
         ResetDraggedItem();
     }

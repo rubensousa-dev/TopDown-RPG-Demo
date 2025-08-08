@@ -15,33 +15,23 @@ public class PickupItem : MonoBehaviour, IInteractable
     public bool Interact(PlayerInteractor interactor)
     {
         if (itemData == null) return false;
-
-        // Adicionar item ao inventário usando o singleton
         if (UIManager.Instance != null)
         {
             bool success = UIManager.Instance.AddItemToInventory(itemData, pickupQuantity);
             
             if (success)
             {
-                // Item foi adicionado com sucesso
-                Debug.Log($"Item '{itemData.ItemName}' adicionado ao inventário!");
-                
                 if (destroyOnPickup) 
                 {
                     Destroy(gameObject);
                 }
                 return true;
             }
-            else
-            {
-                // Inventário cheio
-                Debug.Log($"Inventário cheio! Não foi possível adicionar {pickupQuantity} {itemData.ItemName}(s)");
-                return false;
-            }
+            else return false;
+            
         }
         else
         {
-            Debug.LogWarning("UIManager não encontrado! Item não pode ser adicionado ao inventário.");
             if (destroyOnPickup) Destroy(gameObject);
             return true;
         }
